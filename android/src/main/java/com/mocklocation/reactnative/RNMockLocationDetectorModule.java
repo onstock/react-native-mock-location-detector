@@ -80,6 +80,9 @@ public class RNMockLocationDetectorModule extends ReactContextBaseJavaModule {
         if (android.os.Build.VERSION.SDK_INT >= 18) {
             return location.isFromMockProvider();
         }
+        if (android.os.Build.VERSION.SDK_INT >= 31) {
+            return location.isMock();
+        }
         if (Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ALLOW_MOCK_LOCATION).equals("0")) {
             return false;
         }
